@@ -1,13 +1,18 @@
 from prettytable import PrettyTable
 import datetime
 import json
+from dateutil.parser import parse
+
+
+
+
 x = PrettyTable()
 y = PrettyTable()
 individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open('./gedcom.ged',mode='r') 
+file = open("C:\\Users\Patel\Desktop\GEDCOM_Team4\Sprint_01\gedcom.ged",mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
@@ -182,15 +187,13 @@ print("\n")
 print("Family Table ---------------------------------------------------------------------------------------------------->")
 print(y)
 
-print("Individual JSON...............")
-for item in individuals_json:
-    print(item)
+# print("Individual JSON...............")
+# for item in individuals_json:
+#     print(item)
 
-print("Family JSON...............")
-for item in families_json:
-    print(item)
-
-
+# print("Family JSON...............")
+# for item in families_json:
+#     print(item)
 
         
         
