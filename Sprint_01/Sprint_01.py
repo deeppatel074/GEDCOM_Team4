@@ -2,17 +2,13 @@ from prettytable import PrettyTable
 import datetime
 import json
 from dateutil.parser import parse
-
-
-
-
 x = PrettyTable()
 y = PrettyTable()
 individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open("C:\\Users\Patel\Desktop\GEDCOM_Team4\Sprint_01\gedcom.ged",mode='r') 
+file = open('gedcom.ged',mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
@@ -157,6 +153,7 @@ while i<end_index:
         else:
             i+=1
     elif arr[0] == "0":
+        children = children if len(children)>0 else "N/A"
         y.add_row([family_id,marriage_date,divorced_date,husband_id,husband_name,wife_id,wife_name,children])
         z = json.dumps({
             "family_id":str(family_id),
@@ -187,13 +184,23 @@ print("\n")
 print("Family Table ---------------------------------------------------------------------------------------------------->")
 print(y)
 
-# print("Individual JSON...............")
-# for item in individuals_json:
-#     print(item)
 
-# print("Family JSON...............")
-# for item in families_json:
-#     print(item)
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
         
         
