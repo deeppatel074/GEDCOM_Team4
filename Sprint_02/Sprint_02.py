@@ -240,7 +240,7 @@ def US09():
                         if j["id"] in convert_string:
                             if j["birth_date"] != "N/A":
                                 if parse(j["birth_date"]) > parse(i["death_date"]):
-                                    error_story9.append("ERROR: Birth date for individual " + j["id"] + " is after the mother death date")
+                                    error_story9.append("ERROR: INDIVIDUAL: US09: Birth date for individual " + j["id"] + " is after the mother death date")
             elif i["id"] == item["husband_id"]:
                 if i["death_date"] != 'N/A' and convert_string != "N/A":
                     for j in individuals_json:
@@ -251,7 +251,7 @@ def US09():
                                 arr = str(x)
                                 days = int(arr.split(" ")[0])
                                 if days>270:
-                                    error_story9.append("ERROR: Birth date for individual " + j["id"] + " is after 9 months of the father death date")    
+                                    error_story9.append("ERROR: INDIVIDUAL: US09: Birth date for individual " + j["id"] + " is after 9 months of the father death date")    
     for i in error_story9:
         print(i)
     return error_story9
@@ -275,7 +275,7 @@ def US10():
                         days = int(arr.split(" ")[0])
                         if days >= 0:
                             if days <= 5110:
-                                error.append("ERROR: Marriage for "+ i["id"]+" should be after 14 year of the age")
+                                error.append("ERROR: INDIVIDUAL: US10: Marriage for "+ i["id"]+" should be after 14 year of the age")
 
                     elif i["id"] == wfs_id:
                         x = parse(marr_date) - parse(i["birth_date"])
@@ -283,7 +283,7 @@ def US10():
                         days = int(arr.split(" ")[0])
                         if days >= 0:
                             if days <= 5110:
-                                error.append("ERROR: Marriage for "+ i["id"]+" should be after 14 year of the age")
+                                error.append("ERROR: INDIVIDUAL: US 10: Marriage for "+ i["id"]+" should be after 14 year of the age")
     for i in error:
         print(i)
     return error
@@ -299,7 +299,7 @@ def US17():
         children = record["children"][1:-1].split(",")
         for child_id in children:
             if child_id == "'" + record["wife_id"] + "'" or child_id == "'" + record["husband_id"] + "'":
-                print("No marriages to descendents", record["husband_id"], record["wife_id"], child_id)
+                print("ERROR:","FAMILY:","US17:","No marriages to descendents", record["husband_id"], record["wife_id"], child_id)
 US17()
 
 def US18():
@@ -309,24 +309,23 @@ def US18():
         record = json.loads(record)
         children = record["children"][1:-1].split(",")
         if "'" + record["wife_id"] + "'" in children and "'" + record["husband_id"] + "'" in children:
-                print("No marriages to siblings", record["husband_id"], record["wife_id"])
+                print("ERROR:","FAMILY:","US18:","No marriages to siblings", record["husband_id"], record["wife_id"])
 US18()
 
 def US21():
     errors = []
     for family in families_json:
         family = json.loads(family)
-        #print(family)
         husband_id = family['husband_id']
         wife_id = family['wife_id']
         for individual in individuals_json:
             individual = json.loads(individual)
-            #print (individual)
             if individual['id'] == husband_id and individual['sex'] != 'MALE':
-                errors.append("Error: Husband {} in family {} is not male".format(husband_id, family['family_id']))
+                errors.append("ERROR: INDIVIDUAL: US21: Husband {} in family {} is not male".format(husband_id, family['family_id']))
             elif individual['id'] == wife_id and individual['sex'] != 'FEMALE':
-                errors.append("Error: Wife {} in family {} is not female".format(wife_id, family['family_id']))
-    print(errors,"===")
+                errors.append("ERROR: INDIVIDUAL: US21: Wife {} in family {} is not female".format(wife_id, family['family_id']))
+    for i in errors:
+        print(i)
     return errors
 
 US21()
@@ -340,7 +339,7 @@ def US22():
     for individual in individuals_json:
         individual = json.loads(individual)
         if individual['id'] in individual_ids:
-            errors.append("Error: Individual ID {} is not unique".format(individual['id']))
+            errors.append("ERROR: INDIVIDUAL: US22: Individual ID {} is not unique".format(individual['id']))
         else:
             individual_ids.add(individual['id'])
     
@@ -348,11 +347,12 @@ def US22():
     for family in families_json:
         family = json.loads(family)
         if family['family_id'] in family_ids:
-            errors.append("Error: Family ID {} is not unique".format(family['family_id']))
+            errors.append("ERROR: FAMILY: US22: Family ID {} is not unique".format(family['family_id']))
         else:
             family_ids.add(family['family_id'])
     
-    print(errors,"=")
+    for i in errors:
+        print(i)
     return errors
 US22()
 

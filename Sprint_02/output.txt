@@ -1,0 +1,75 @@
+(base) Admin@MacBook-Pro Sprint_02 % /usr/local/bin/python3 /Users/Admin/Desktop/Backup/GEDCOM_Team4/Sprint_02/Sprint_02.py
+Individual Table ----------------------------------------------------------------------------------->
++-----+------------------------+--------+-------------+-----+-------+-------------+---------+---------+
+|  ID |          Name          | Gender |   Birthday  | Age | Alive |    Death    |  Child  |  Spouse |
++-----+------------------------+--------+-------------+-----+-------+-------------+---------+---------+
+|  I1 |      Nirav /Jain/      |  MALE  |  5 JUL 1998 |  25 |  TRUE |     N/A     |  {'F2'} |  {'F1'} |
+|  I1 |      Nirav /Jain/      |  MALE  |  5 JUL 1998 |  25 |  TRUE |     N/A     |  {'F2'} |  {'F1'} |
+|  I2 |    Chandresh /Jain/    |  MALE  |  5 SEP 2023 |  0  |  TRUE |     N/A     |  {'F3'} |  {'F2'} |
+|  I3 |     Rachna /Patni/     | FEMALE | 27 MAY 1976 |  47 |  TRUE |     N/A     |  {'F4'} |  {'F2'} |
+|  I4 |    Naivedhya /Jain/    |  MALE  |  3 SEP 2003 |  20 |  TRUE |     N/A     |  {'F2'} |  {'F5'} |
+|  I5 |  Shrawan Kumar /Jain/  |  MALE  | 24 JUN 1947 |  76 |  TRUE |     N/A     |  {'F7'} |  {'F6'} |
+|  I6 | Rajkumari Jain /Godha/ |  MALE  |  1 JAN 1950 |  73 | FALSE | 20 JUN 2012 |   N/A   |  {'F6'} |
+|  I7 |     Ashok /Patni/      | FEMALE | 29 OCT 1948 |  75 |  TRUE |     N/A     |   N/A   |  {'F4'} |
+|  I8 |     Padma /Ajmera/     | FEMALE | 13 FEB 1951 |  72 |  TRUE |     N/A     |   N/A   |  {'F4'} |
+|  I9 |     Rodulal /Jain/     |  MALE  | 20 JUN 2006 |  17 | FALSE |  3 MAY 1998 |   N/A   |  {'F7'} |
+| I10 |     Rima /Gadiya/      | FEMALE | 15 NOV 1850 | 173 | FALSE | 12 AUG 2009 |   N/A   |  {'F7'} |
+| I11 |     Kiran /Patni/      | FEMALE | 27 NOV 1860 | 163 |  TRUE |     N/A     |   N/A   |  {'F8'} |
+| I12 |      Manas /Jain/      |  MALE  | 13 MAY 1978 |  45 |  TRUE |     N/A     |  {'F8'} |   N/A   |
+| I13 |     Sunita /Jain/      | FEMALE |  6 JUN 1970 |  53 |  TRUE |     N/A     |  {'F6'} |  {'F9'} |
+| I14 |      Sumit /Kala/      |  MALE  |  7 MAY 1962 |  61 | FALSE | 11 NOV 1974 |   N/A   |  {'F9'} |
+| I15 |     Shilpa /Jain/      | FEMALE |  9 JAN 1998 |  25 | FALSE | 16 SEP 2021 |   N/A   |  {'F1'} |
+| I16 |     Shaili /Jain/      | FEMALE |  3 APR 2004 |  19 |  TRUE |     N/A     |   N/A   |  {'F5'} |
+| I17 |      Aarav /Jain/      |  MALE  |  8 MAY 1992 |  31 |  TRUE |     N/A     |  {'F2'} | {'F10'} |
+| I18 |     Cherry /Jain/      | FEMALE |  3 APR 1992 |  31 | FALSE |  1 MAR 2006 |   N/A   | {'F10'} |
+| I19 |     Utkarsh /Jain/     |  MALE  |  3 MAR 2006 |  17 |  TRUE |     N/A     | {'F10'} |   N/A   |
+| I20 |      Naman /Jain/      |  MALE  | 10 APR 1980 |  43 | FALSE |  1 MAR 2015 |  {'F2'} | {'F11'} |
+| I21 |      Vidhi /Jain/      | FEMALE |  3 FEB 1985 |  38 |  TRUE |     N/A     |   N/A   | {'F11'} |
+| I22 |     Manish /Jain/      |  MALE  |  5 SEP 2016 |  7  |  TRUE |     N/A     | {'F11'} |   N/A   |
+| I23 |     Miloni /Jain/      | FEMALE |     N/A     |  7  |  TRUE |     N/A     | {'F11'} |   N/A   |
+| I24 |     Maharsh /Jain/     |  MALE  | 21 FEB 2023 |  0  |  TRUE |     N/A     |  {'F2'} |   N/A   |
+| I25 |     Rachel /Jain/      | FEMALE |  3 JUN 2000 |  23 | FALSE | 21 FEB 2023 |  {'F2'} |   N/A   |
++-----+------------------------+--------+-------------+-----+-------+-------------+---------+---------+
+
+
+Family Table ---------------------------------------------------------------------------------------------------->
++-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------+
+|  ID |   Married   |  Divorced  | HUSBAND ID |     HUSBAND NAME     | Wife ID |       Wife Name        |                 Children                 |
++-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------+
+|  F1 |  6 JUN 2015 | 9 AUG 2022 |     I1     |     Nirav /Jain/     |   I15   |     Shilpa /Jain/      |                 {'I15'}                  |
+|  F2 | 18 MAY 1997 |    N/A     |     I2     |   Chandresh /Jain/   |    I3   |     Rachna /Patni/     | {'I20', 'I1', 'I4', 'I17', 'I25', 'I24'} |
+|  F3 |  7 APR 2015 |    N/A     |     I5     | Shrawan Kumar /Jain/ |   I11   |     Kiran /Patni/      |                  {'I2'}                  |
+|  F6 |     N/A     |    N/A     |     I5     | Shrawan Kumar /Jain/ |    I6   | Rajkumari Jain /Godha/ |                 {'I13'}                  |
+|  F4 | 17 FEB 1965 |    N/A     |     I7     |    Ashok /Patni/     |    I8   |     Padma /Ajmera/     |                  {'I3'}                  |
+|  F5 |  5 JAN 2019 | 4 MAR 2018 |     I4     |   Naivedhya /Jain/   |   I16   |     Shaili /Jain/      |                   N/A                    |
+|  F7 |     N/A     |    N/A     |     I9     |    Rodulal /Jain/    |   I10   |     Rima /Gadiya/      |                  {'I5'}                  |
+|  F8 |     N/A     |    N/A     |    N/A     |         N/A          |   I11   |     Kiran /Patni/      |                 {'I12'}                  |
+|  F9 | 17 NOV 1980 |    N/A     |    I14     |     Sumit /Kala/     |   I13   |     Sunita /Jain/      |                   N/A                    |
+| F10 |  5 MAR 2005 |    N/A     |    I17     |     Aarav /Jain/     |   I18   |     Cherry /Jain/      |                 {'I19'}                  |
+| F11 |     N/A     |    N/A     |     I7     |    Ashok /Patni/     |    I8   |     Padma /Ajmera/     |               {'I7', 'I8'}               |
+| F11 | 22 JUN 2012 | 5 AUG 2015 |    I20     |     Naman /Jain/     |   I21   |      Vidhi /Jain/      |              {'I22', 'I23'}              |
++-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------+
+Individuals born in last 30 days ----------------------------------------------------------->
++-----+----------------+--------+-------------+-----+-------+-------+--------+--------+
+|  ID |      Name      | Gender |   Birthday  | Age | Alive | Death | Child  | Spouse |
++-----+----------------+--------+-------------+-----+-------+-------+--------+--------+
+| I24 | Maharsh /Jain/ |  MALE  | 21 FEB 2023 |  0  |  TRUE |  N/A  | {'F2'} |  N/A   |
++-----+----------------+--------+-------------+-----+-------+-------+--------+--------+
+Individuals who died in last 30 days ----------------------------------------------------------->
++-----+---------------+--------+------------+-----+-------+-------------+--------+--------+
+|  ID |      Name     | Gender |  Birthday  | Age | Alive |    Death    | Child  | Spouse |
++-----+---------------+--------+------------+-----+-------+-------------+--------+--------+
+| I25 | Rachel /Jain/ | FEMALE | 3 JUN 2000 |  23 | FALSE | 21 FEB 2023 | {'F2'} |  N/A   |
++-----+---------------+--------+------------+-----+-------+-------------+--------+--------+
+ERROR: INDIVIDUAL: US09: Birth date for individual I19 is after the mother death date
+ERROR: INDIVIDUAL: US09: Birth date for individual I22 is after 9 months of the father death date
+ERROR: INDIVIDUAL: US 10: Marriage for I13 should be after 14 year of the age
+ERROR: INDIVIDUAL: US10: Marriage for I17 should be after 14 year of the age
+ERROR: INDIVIDUAL: US 10: Marriage for I18 should be after 14 year of the age
+ERROR: FAMILY: US17: No marriages to descendents I1 I15 'I15'
+ERROR: FAMILY: US17: No marriages to descendents I7 I8 'I7'
+ERROR: INDIVIDUAL: US21: Wife I6 in family F6 is not female
+ERROR: INDIVIDUAL: US21: Husband I7 in family F4 is not male
+ERROR: INDIVIDUAL: US21: Husband I7 in family F11 is not male
+ERROR: INDIVIDUAL: US22: Individual ID I1 is not unique
+ERROR: FAMILY: US22: Family ID F11 is not unique

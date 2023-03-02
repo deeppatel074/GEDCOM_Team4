@@ -24,6 +24,17 @@
 2 PLAC Neemuch
 1 FAMS @F1@
 1 FAMC @F2@
+0 @I1@ INDI
+1 NAME Nirav /Jain/
+2 GIVN Nirav
+2 SURN Jain
+2 _MARNM Jain
+1 SEX M
+1 BIRT
+2 DATE 5 JUL 1998
+2 PLAC Neemuch
+1 FAMS @F1@
+1 FAMC @F2@
 0 @I2@ INDI
 1 NAME Chandresh /Jain/
 2 GIVN Chandresh
@@ -74,7 +85,7 @@
 2 GIVN Rajkumari Jain
 2 SURN Godha
 2 _MARNM Jain
-1 SEX F
+1 SEX M
 1 BIRT
 2 DATE 1 JAN 1950
 1 DEAT Y
@@ -85,7 +96,7 @@
 2 GIVN Ashok
 2 SURN Patni
 2 _MARNM Patni
-1 SEX M
+1 SEX F
 1 BIRT
 2 DATE 29 OCT 1948
 1 FAMS @F4@
@@ -355,6 +366,11 @@
 2 PLAC Ahmedabad
 1 _CURRENT Y
 1 _PRIMARY Y
+0 @F11@ FAM
+1 HUSB @I7@
+1 WIFE @I8@
+1 CHIL @I7@
+1 CHIL @I8@
 0 @F11@ FAM
 1 HUSB @I20@
 1 WIFE @I21@
