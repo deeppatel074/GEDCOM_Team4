@@ -189,6 +189,7 @@ print("Family Table ------------------------------------------------------------
 print(y)
 
 def US36():
+    res = []
     result_us36 = PrettyTable()
     result_us36.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
     for item in individuals_json:
@@ -200,14 +201,17 @@ def US36():
             arr = str(x)
             days = int(arr.split(" ")[0])
             if days<30 and days>0:
+                res.append(([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']]))
                 result_us36.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
     print("Individuals born in last 30 days ----------------------------------------------------------->")      
-    print(result_us36)  
+    print(result_us36)
+    return res  
 
 
 US36()
 
 def US37():
+    res = []
     result_us37 = PrettyTable()
     result_us37.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
     for item in individuals_json:
@@ -219,9 +223,11 @@ def US37():
             arr = str(x)
             days = int(arr.split(" ")[0])
             if days<30 and days>0:
+                res.append(([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']]))
                 result_us37.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
     print("Individuals who died in last 30 days ----------------------------------------------------------->")      
-    print(result_us37)      
+    print(result_us37)
+    return res      
 
 US37()
 
