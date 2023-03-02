@@ -3,6 +3,7 @@ import datetime
 import json
 from dateutil.parser import parse
 from datetime import date
+from collections import defaultdict
 
 x = PrettyTable()
 y = PrettyTable()
@@ -282,8 +283,27 @@ def US37():
     print(result_us37)      
 
 US37()
-    
-    
+
+def US17():
+    result_us17 = PrettyTable()
+    result_us17.field_names = ["ID", "Married", "Divorced", "Husband ID", "Wife ID", "Wife Name", "Children"]
+    for record in families_json:
+        record = json.loads(record)
+        children = record["children"][1:-1].split(",")
+        for child_id in children:
+            if child_id == "'" + record["wife_id"] + "'" or child_id == "'" + record["husband_id"] + "'":
+                print("No marriages to descendents", record["husband_id"], record["wife_id"], child_id)
+US17()
+
+def US18():
+    result_us18 = PrettyTable()
+    result_us18.field_names = ["ID", "Married", "Divorced", "Husband ID", "Wife ID", "Wife Name", "Children"]
+    for record in families_json:
+        record = json.loads(record)
+        children = record["children"][1:-1].split(",")
+        if "'" + record["wife_id"] + "'" in children and "'" + record["husband_id"] + "'" in children:
+                print("No marriages to siblings", record["husband_id"], record["wife_id"])
+US18()
 
 
 
