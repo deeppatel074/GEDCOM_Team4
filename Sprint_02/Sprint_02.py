@@ -12,7 +12,7 @@ individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open('gedcom.ged',mode='r') 
+file = open('C:\\Users\Patel\OneDrive\Desktop\GEDCOM_Team4\Sprint_02\gedcom.ged',mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
@@ -330,6 +330,7 @@ def US21():
 
 US21()
 
+
 def US22():
     errors = []
     individual_ids = set()
@@ -354,6 +355,7 @@ def US22():
     for i in errors:
         print(i)
     return errors
+
 US22()
 
 
