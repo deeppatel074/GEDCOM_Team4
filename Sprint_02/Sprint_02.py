@@ -11,7 +11,7 @@ individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open('C:\\Users\Patel\OneDrive\Desktop\GEDCOM_Team4\Sprint_02\gedcom.ged',mode='r') 
+file = open('gedcom.ged',mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
