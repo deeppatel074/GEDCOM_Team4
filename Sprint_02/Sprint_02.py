@@ -2,8 +2,11 @@ from prettytable import PrettyTable
 import datetime
 import json
 from dateutil.parser import parse
+from datetime import date
+
 x = PrettyTable()
 y = PrettyTable()
+
 individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
@@ -184,6 +187,21 @@ print("\n")
 print("Family Table ---------------------------------------------------------------------------------------------------->")
 print(y)
 
+def US36():
+    result_us36 = PrettyTable()
+    result_us36.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
+    for item in individuals_json:
+        item = json.loads(item)
+        birth_date = item["birth_date"]
+        if birth_date!="N/A":
+            today = str(date.today())
+            x = parse(today) - parse(birth_date)
+            arr = str(x)
+            days = int(arr.split(" ")[0])
+            if days<30 and days>0:
+                result_us36.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
+    print("Individuals born in last 30 days ----------------------------------------------------------->")      
+    print(result_us36)      
 
 def US09():
     error_story9 = []
@@ -245,7 +263,25 @@ def US10():
     return error
 
 print(US10())
+US36()
 
+def US37():
+    result_us37 = PrettyTable()
+    result_us37.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
+    for item in individuals_json:
+        item = json.loads(item)
+        death_date = item["death_date"]
+        if death_date!="N/A":
+            today = str(date.today())
+            x = parse(today) - parse(death_date)
+            arr = str(x)
+            days = int(arr.split(" ")[0])
+            if days<30 and days>0:
+                result_us37.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
+    print("Individuals who died in last 30 days ----------------------------------------------------------->")      
+    print(result_us37)      
+
+US37()
     
     
 
