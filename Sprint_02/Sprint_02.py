@@ -305,6 +305,49 @@ def US18():
                 print("No marriages to siblings", record["husband_id"], record["wife_id"])
 US18()
 
+def US21():
+    errors = []
+    for family in families_json:
+        family = json.loads(family)
+        #print(family)
+        husband_id = family['husband_id']
+        wife_id = family['wife_id']
+        for individual in individuals_json:
+            individual = json.loads(individual)
+            #print (individual)
+            if individual['id'] == husband_id and individual['sex'] != 'MALE':
+                errors.append("Error: Husband {} in family {} is not male".format(husband_id, family['family_id']))
+            elif individual['id'] == wife_id and individual['sex'] != 'FEMALE':
+                errors.append("Error: Wife {} in family {} is not female".format(wife_id, family['family_id']))
+    print(errors)
+    return errors
+
+US21()
+
+def US22():
+    errors = []
+    individual_ids = set()
+    family_ids = set()
+    
+    # Check individual IDs
+    for individual in individuals_json:
+        individual = json.loads(individual)
+        if individual['id'] in individual_ids:
+            errors.append("Error: Individual ID {} is not unique".format(individual['id']))
+        else:
+            individual_ids.add(individual['id'])
+    
+    # Check family IDs
+    for family in families_json:
+        family = json.loads(family)
+        if family['family_id'] in family_ids:
+            errors.append("Error: Family ID {} is not unique".format(family['family_id']))
+        else:
+            family_ids.add(family['family_id'])
+    
+    print(errors)
+    return errors
+US22()
 
 
 
