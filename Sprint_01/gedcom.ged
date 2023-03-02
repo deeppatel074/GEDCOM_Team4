@@ -198,6 +198,8 @@ NOTE:GITHUB_URL: https://github.com/deeppatel074/GEDCOM_Team4
 1 SEX F
 1 BIRT
 2 DATE 3 APR 1992
+1 DEAT 
+2 DATE 1 MAR 2006
 1 FAMS @F10@
 0 @I19@ INDI
 1 NAME Utkarsh /Jain/
