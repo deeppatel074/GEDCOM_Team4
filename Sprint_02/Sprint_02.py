@@ -202,7 +202,28 @@ def US36():
             if days<30 and days>0:
                 result_us36.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
     print("Individuals born in last 30 days ----------------------------------------------------------->")      
-    print(result_us36)      
+    print(result_us36)  
+
+
+US36()
+
+def US37():
+    result_us37 = PrettyTable()
+    result_us37.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
+    for item in individuals_json:
+        item = json.loads(item)
+        death_date = item["death_date"]
+        if death_date!="N/A":
+            today = str(date.today())
+            x = parse(today) - parse(death_date)
+            arr = str(x)
+            days = int(arr.split(" ")[0])
+            if days<30 and days>0:
+                result_us37.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
+    print("Individuals who died in last 30 days ----------------------------------------------------------->")      
+    print(result_us37)      
+
+US37()
 
 def US09():
     error_story9 = []
@@ -231,9 +252,11 @@ def US09():
                                 days = int(arr.split(" ")[0])
                                 if days>270:
                                     error_story9.append("ERROR: Birth date for individual " + j["id"] + " is after 9 months of the father death date")    
+    for i in error_story9:
+        print(i)
     return error_story9
 
-print(US09())
+US09()
 
 def US10():
     error = []
@@ -261,28 +284,12 @@ def US10():
                         if days >= 0:
                             if days <= 5110:
                                 error.append("ERROR: Marriage for "+ i["id"]+" should be after 14 year of the age")
+    for i in error:
+        print(i)
     return error
 
-print(US10())
-US36()
+US10()
 
-def US37():
-    result_us37 = PrettyTable()
-    result_us37.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
-    for item in individuals_json:
-        item = json.loads(item)
-        death_date = item["death_date"]
-        if death_date!="N/A":
-            today = str(date.today())
-            x = parse(today) - parse(death_date)
-            arr = str(x)
-            days = int(arr.split(" ")[0])
-            if days<30 and days>0:
-                result_us37.add_row([item['id'],item['name'],item['sex'],item['birth_date'],item['current_age'],item['alive'],item['death_date'],item['family_child'],item['family_spouse']])
-    print("Individuals who died in last 30 days ----------------------------------------------------------->")      
-    print(result_us37)      
-
-US37()
 
 def US17():
     result_us17 = PrettyTable()
@@ -319,7 +326,7 @@ def US21():
                 errors.append("Error: Husband {} in family {} is not male".format(husband_id, family['family_id']))
             elif individual['id'] == wife_id and individual['sex'] != 'FEMALE':
                 errors.append("Error: Wife {} in family {} is not female".format(wife_id, family['family_id']))
-    print(errors)
+    print(errors,"===")
     return errors
 
 US21()
@@ -345,7 +352,7 @@ def US22():
         else:
             family_ids.add(family['family_id'])
     
-    print(errors)
+    print(errors,"=")
     return errors
 US22()
 
