@@ -37,7 +37,7 @@ Family Table -------------------------------------------------------------------
 |  ID |   Married   |  Divorced  | HUSBAND ID |     HUSBAND NAME     | Wife ID |       Wife Name        |                 Children                 |
 +-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------+
 |  F1 |  6 JUN 2015 | 9 AUG 2022 |     I1     |     Nirav /Jain/     |   I15   |     Shilpa /Jain/      |                 {'I15'}                  |
-|  F2 | 18 MAY 1997 |    N/A     |     I2     |   Chandresh /Jain/   |    I3   |     Rachna /Patni/     | {'I4', 'I24', 'I25', 'I20', 'I17', 'I1'} |
+|  F2 | 18 MAY 1997 |    N/A     |     I2     |   Chandresh /Jain/   |    I3   |     Rachna /Patni/     | {'I24', 'I1', 'I25', 'I4', 'I17', 'I20'} |
 |  F3 |  7 APR 2015 |    N/A     |     I5     | Shrawan Kumar /Jain/ |   I11   |     Kiran /Patni/      |                  {'I2'}                  |
 |  F6 |     N/A     |    N/A     |     I5     | Shrawan Kumar /Jain/ |    I6   | Rajkumari Jain /Godha/ |                 {'I13'}                  |
 |  F4 | 17 FEB 1965 |    N/A     |     I7     |    Ashok /Patni/     |    I8   |     Padma /Ajmera/     |                  {'I3'}                  |
@@ -47,7 +47,7 @@ Family Table -------------------------------------------------------------------
 |  F9 | 17 NOV 1980 |    N/A     |    I14     |     Sumit /Kala/     |   I13   |     Sunita /Jain/      |                   N/A                    |
 | F10 |  5 MAR 2005 |    N/A     |    I17     |     Aarav /Jain/     |   I18   |     Cherry /Jain/      |                 {'I19'}                  |
 | F11 |     N/A     |    N/A     |     I7     |    Ashok /Patni/     |    I8   |     Padma /Ajmera/     |               {'I7', 'I8'}               |
-| F11 | 22 JUN 2012 | 5 AUG 2015 |    I20     |     Naman /Jain/     |   I21   |      Vidhi /Jain/      |              {'I20', 'I21'}              |
+| F11 | 22 JUN 2012 | 5 AUG 2015 |    I20     |     Naman /Jain/     |   I21   |      Vidhi /Jain/      |              {'I22', 'I23'}              |
 +-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------+
 Individuals born in last 30 days ----------------------------------------------------------->
 +-----+----------------+--------+-------------+-----+-------+-------+--------+--------+
@@ -62,14 +62,13 @@ Individuals who died in last 30 days -------------------------------------------
 | I25 | Rachel /Jain/ | FEMALE | 3 JUN 2000 |  23 | FALSE | 21 FEB 2023 | {'F2'} |  N/A   |
 +-----+---------------+--------+------------+-----+-------+-------------+--------+--------+
 ERROR: INDIVIDUAL: US09: Birth date for individual I19 is after the mother death date
+ERROR: INDIVIDUAL: US09: Birth date for individual I22 is after 9 months of the father death date
 ERROR: INDIVIDUAL: US 10: Marriage for I13 should be after 14 year of the age
 ERROR: INDIVIDUAL: US10: Marriage for I17 should be after 14 year of the age
 ERROR: INDIVIDUAL: US 10: Marriage for I18 should be after 14 year of the age
 ERROR: FAMILY: US17: No marriages to descendents I1 I15 'I15'
 ERROR: FAMILY: US17: No marriages to descendents I7 I8 'I7'
-ERROR: FAMILY: US17: No marriages to descendents I20 I21 'I20'
 ERROR: FAMILY: US18: No marriages to siblings Husband I7 Wife I8
-ERROR: FAMILY: US18: No marriages to siblings Husband I20 Wife I21
 ERROR: INDIVIDUAL: US21: Wife I6 in family F6 is not female
 ERROR: INDIVIDUAL: US21: Husband I7 in family F4 is not male
 ERROR: INDIVIDUAL: US21: Husband I7 in family F11 is not male
