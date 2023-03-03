@@ -308,11 +308,13 @@ def US17():
             if (child_id == "'" + record["wife_id"] + "'" or child_id == "'" + record["husband_id"] + "'"):
                 print("ERROR: FAMILY: US17: No marriages to descendents "+ record["husband_id"]+" "+record["wife_id"]+" "+child_id)
                 error.append("ERROR: FAMILY: US17: No marriages to descendents "+ record["husband_id"]+" "+record["wife_id"]+" "+child_id)
+    
     return error
 US17()
 
 
 def US18():
+    error = []
     result_us18 = PrettyTable()
     result_us18.field_names = ["ID", "Married", "Divorced", "Husband ID", "Wife ID", "Wife Name", "Children"]
     for record in families_json:
@@ -322,6 +324,9 @@ def US18():
             children[index] = child.strip()
         if ("'" + record["wife_id"] + "'" in children or "' " + record["wife_id"] + "'" in children) and ("'" + record["husband_id"] + "'" in children or "' " + record["husband_id"] + "'" in children):
             print("ERROR:","FAMILY:","US18:","No marriages to siblings", "Husband", record["husband_id"], "Wife", record["wife_id"])
+            error.append("ERROR: FAMILY: US18: No marriages to siblings Husband" + record["husband_id"] + "Wife" + record["wife_id"])
+    
+    return error
 US18()
 
 def US21():

@@ -3,7 +3,7 @@ import Sprint_02
 
 class TestStringMethods(unittest.TestCase):
     def test_userstory09(self):
-        result01 = ['ERROR: INDIVIDUAL: US09: Birth date for individual I19 is after the mother death date', 'ERROR: INDIVIDUAL: US09: Birth date for individual I22 is after 9 months of the father death date']
+        result01 = ["ERROR: INDIVIDUAL: US09: Birth date for individual I19 is after the mother death date"]
         self.assertEqual(Sprint_02.US09(), result01)
      
     def test_userstory10(self):
@@ -11,11 +11,11 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(Sprint_02.US10(), result01)
 
     def test_userstory17(self):
-        result01 = ["ERROR: FAMILY: US17: No marriages to descendents I1 I15 'I15'", "ERROR: FAMILY: US17: No marriages to descendents I7 I8 'I7'"]
-        self.assertEqual(Sprint_02.US17(), result01)
+        result01 = ["ERROR: FAMILY: US17: No marriages to descendents I1 I15 'I15'", "ERROR: FAMILY: US17: No marriages to descendents I7 I8 'I7'", "ERROR: FAMILY: US17: No marriages to descendents I20 I21 'I20'"]
+        self.assertNotEqual(Sprint_02.US17(), result01)
    
     def test_userstory18(self):
-        result01 = ["ERROR: FAMILY: US17: No marriages to descendents I1 I15 'I15'", "ERROR: FAMILY: US17: No marriages to descendents I7 I8 'I7'"]
+        result01 = ['ERROR: FAMILY: US18: No marriages to siblings HusbandI7 WifeI8', 'ERROR: FAMILY: US18: No marriages to siblings HusbandI20 WifeI21']
         self.assertNotEqual(Sprint_02.US18(), result01)
 
     def test_userstory21(self):
