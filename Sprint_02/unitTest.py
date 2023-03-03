@@ -35,23 +35,6 @@ class TestStringMethods(unittest.TestCase):
         self.assertNotEqual(Sprint_02.US37(), result01)
 
 
-    # def test03_userstory01(self):
-    #     is_True = False
-    #     if type(user_sotry_01.US01()) == list:
-    #         is_True = True
-    #     self.assertTrue(is_True)
-
-    # def test04_userstory01(self):
-    #     is_True = False
-    #     if type(user_sotry_01.US01()) != list:
-    #         is_True = True
-    #     self.assertFalse(is_True)
-
-    # def test05_userstory01(self):
-    #     result01 = ['Error: Birthday at I2 of Chandresh /Jain/ should before current date']
-    #     self.assertListEqual(user_sotry_01.US01(), result01)
-
-
 
 if __name__ == '__main__':
     unittest.main()
