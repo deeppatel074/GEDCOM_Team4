@@ -12,7 +12,7 @@ individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open('C:\\Users\Patel\OneDrive\Desktop\GEDCOM_Team4\Sprint_02\gedcom.ged',mode='r') 
+file = open('gedcom.ged',mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
@@ -305,7 +305,7 @@ def US17():
         record = json.loads(record)
         children = record["children"][1:-1].split(",")
         for child_id in children:
-            if child_id == "'" + record["wife_id"] + "'" or child_id == "'" + record["husband_id"] + "'":
+            if (child_id == "'" + record["wife_id"] + "'" or child_id == "'" + record["husband_id"] + "'"):
                 print("ERROR: FAMILY: US17: No marriages to descendents "+ record["husband_id"]+" "+record["wife_id"]+" "+child_id)
                 error.append("ERROR: FAMILY: US17: No marriages to descendents "+ record["husband_id"]+" "+record["wife_id"]+" "+child_id)
     return error
@@ -318,8 +318,10 @@ def US18():
     for record in families_json:
         record = json.loads(record)
         children = record["children"][1:-1].split(",")
-        if "'" + record["wife_id"] + "'" in children and "'" + record["husband_id"] + "'" in children:
-                print("ERROR:","FAMILY:","US18:","No marriages to siblings", record["husband_id"], record["wife_id"])
+        for (index, child) in enumerate(children):
+            children[index] = child.strip()
+        if ("'" + record["wife_id"] + "'" in children or "' " + record["wife_id"] + "'" in children) and ("'" + record["husband_id"] + "'" in children or "' " + record["husband_id"] + "'" in children):
+            print("ERROR:","FAMILY:","US18:","No marriages to siblings", "Husband", record["husband_id"], "Wife", record["wife_id"])
 US18()
 
 def US21():
