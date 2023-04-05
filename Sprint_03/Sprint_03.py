@@ -242,6 +242,61 @@ def US16():
             
 US16()
 
+def US23():
+    errors = []
+    individuals_dict = {}
+
+    for individual in individuals_json:
+        individual = json.loads(individual)
+        name = individual['name']
+        birth_date = individual['birth_date']
+
+        # check if individual with same name and birth date already exists
+        if (name, birth_date) in individuals_dict:
+            existing_individual = individuals_dict[(name, birth_date)]
+            errors.append("ERROR: INDIVIDUAL: US23: Individual {} ({}) and {} ({}) have the same name and birth date".format(
+                individual['id'], name, existing_individual['id'], existing_individual['name']))
+        else:
+            individuals_dict[(name, birth_date)] = individual
+
+    for i in errors:
+        print(i)
+    return errors
+
+US23()
+
+
+
+def US24():
+    errors = []
+    families_dict = {}
+
+    for family in families_json:
+        family = json.loads(family)
+        husband_name = family['husband_name']
+        wife_name = family['wife_name']
+        marriage_date = family['marriage_date']
+
+        # check if family with same spouses names and marriage date already exists
+        key = (husband_name, wife_name, marriage_date)
+        if key in families_dict:
+            errors.append("ERROR: FAMILY: US24: Family with the same spouses names and marriage date already exists: "  + ", Husband Name: " + str(husband_name) +
+              ", Wife Name: " + str(wife_name) + ", Marriage Date: " + str(marriage_date))
+        else:
+           
+          families_dict[key] = family
+          
+    for i in errors:
+        print(i)
+    return errors
+
+US24()
+
+
+
+
+
+
 
             
 
