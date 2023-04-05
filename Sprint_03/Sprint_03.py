@@ -12,7 +12,7 @@ individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open('gedcom.ged',mode='r') 
+file = open('C:\\Users\Patel\OneDrive\Desktop\GEDCOM_Team4\Sprint_03\gedcom.ged',mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
@@ -292,6 +292,90 @@ def US24():
 
 US24()
 
+def US11():
+     errors = []
+     for family in families_json:
+        family = json.loads(family)
+        husband_id = family['husband_id']
+        wife_id = family['wife_id']
+        marriage_date = family['marriage_date']
+        divorce_date = family.get('divorce_date')
+
+        # Check if husband or wife is married to another person at the same time
+        for other_family in families_json:
+            other_family = json.loads(other_family)
+            if other_family != family:
+                if other_family['husband_id'] == husband_id and not other_family.get('divorce_date') \
+                        and is_date_between(other_family['marriage_date'], marriage_date, other_family.get('divorce_date')):
+                    errors.append("ERROR: FAMILY: US11: Husband " + str(husband_id) + " is married to two people at the same time")
+                elif other_family['wife_id'] == wife_id and not other_family.get('divorce_date') \
+                        and is_date_between(other_family['marriage_date'], marriage_date, other_family.get('divorce_date')):
+                    errors.append("ERROR: FAMILY: US11: Wife " + str(wife_id) + " is married to two people at the same time")
+         # Check if husband or wife is married to another person after divorce from current spouse
+        if divorce_date:
+            for other_family in families_json:
+                other_family = json.loads(other_family)
+                if other_family != family:
+                    if other_family['husband_id'] == husband_id and other_family.get('divorce_date') \
+                            and is_date_between(divorce_date, other_family['marriage_date'], other_family.get('divorce_date')):
+                        errors.append("ERROR: FAMILY: US11: Husband " + str(husband_id) + " got married before divorce from previous spouse")
+                    elif other_family['wife_id'] == wife_id and other_family.get('divorce_date') \
+                            and is_date_between(divorce_date, other_family['marriage_date'], other_family.get('divorce_date')):
+                        errors.append("ERROR: FAMILY: US11: Wife " + str(wife_id) + " got married before divorce from previous spouse")
+     for i in errors:
+        print(i)
+     return errors
+
+def is_date_between(start_date, check_date, end_date):
+    if start_date and check_date and end_date:
+        return start_date <= check_date <= end_date
+    elif start_date and check_date:
+        return start_date <= check_date
+    elif check_date and end_date:
+        return check_date <= end_date
+    else:
+        return False
+
+US11()
+
+def US12():
+    errors = []
+    for family in families_json:
+        family = json.loads(family)
+        children = family['children']
+        if children != "N/A":
+            convert_string = eval(children) if children!="N/A" else "N/A"
+            mother_id = family['wife_id']
+            father_id = family['husband_id']
+            
+            mother_birth_date = None
+            father_birth_date = None
+
+            for i in individuals_json:
+                    i = json.loads(i)
+                    if i['id'] == mother_id and i['birth_date'] != "N/A":
+                        mother_birth_date = parse(i['birth_date'])
+                    if i['id'] == father_id and i['birth_date'] != "N/A":
+                        father_birth_date = parse(i['birth_date'])
+            if mother_birth_date != None and father_birth_date != None and convert_string != 'N/A':
+                for child_id in convert_string:
+                    for i in individuals_json:
+                        i = json.loads(i)
+                        if i['id'] == child_id and i['birth_date'] != "N/A":
+                            child_birth_date = parse(i['birth_date'])
+                            diff_btw_mother = str(mother_birth_date - child_birth_date)
+                            diff_btw_father = str(father_birth_date - child_birth_date)
+                            if abs(int(diff_btw_mother.split(" ")[0])) > 21900 :
+                                errors.append("ERROR: FAMILY: US12: Mother "+ mother_id +" is more than 60 years older than her child "+ i['id'])
+                            if abs(int(diff_btw_father.split(" ")[0])) > 29200 :
+                                errors.append("ERROR: FAMILY: US12: Father "+ father_id +" is more than 80 years older than his child "+ i['id'])
+
+    for i in errors:
+        print(i)
+    return errors
+
+
+US12()
 
 
 
