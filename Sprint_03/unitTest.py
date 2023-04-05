@@ -15,7 +15,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(Sprint_03.US23(),result)
 
     def test_userstory24(self):
-        result = ["ERROR: FAMILY: US24: Family with the same spouses names and marriage date already exists: , Husband Name: Aarav /Jain/, Wife Name: Cherry /Jain/, Marriage Date: 5 MAR 2005"]
+        result = ["ERROR: FAMILY: US24: Family with the same spouse names and marriage date already exists:  Husband Name: Aarav /Jain/, Wife Name: Cherry /Jain/, Marriage Date: 5 MAR 2005"]
         self.assertEqual(Sprint_03.US24(),result)
 
 if __name__ == '__main__':

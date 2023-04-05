@@ -280,7 +280,7 @@ def US24():
         # check if family with same spouses names and marriage date already exists
         key = (husband_name, wife_name, marriage_date)
         if key in families_dict:
-            errors.append("ERROR: FAMILY: US24: Family with the same spouses names and marriage date already exists: "  + ", Husband Name: " + str(husband_name) +
+            errors.append("ERROR: FAMILY: US24: Family with the same spouse names and marriage date already exists: "  + " Husband Name: " + str(husband_name) +
               ", Wife Name: " + str(wife_name) + ", Marriage Date: " + str(marriage_date))
         else:
            
