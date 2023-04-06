@@ -26,5 +26,13 @@ class TestStringMethods(unittest.TestCase):
         result = ["ERROR: FAMILY: US12: Family with the same spouse names and marriage date already exists:  Husband Name: Aarav /Jain/, Wife Name: Cherry /Jain/, Marriage Date: 5 MAR 2005"]
         self.assertNotEqual(Sprint_03.US12(),result)
 
+    def test_userstory19(self):
+        result = "ERROR: FAMILY: US19: Couples with husband id I50 and wife id I51 are first cousins"
+        self.assertNotEqual(Sprint_03.US19(),result)
+
+    def test_userstory20(self):
+        result = "ERROR: FAMILY: US20: Wife with id I53 is aunt of her husband with id I55"
+        self.assertNotEqual(Sprint_03.US20(),result)
+
 if __name__ == '__main__':
     unittest.main()

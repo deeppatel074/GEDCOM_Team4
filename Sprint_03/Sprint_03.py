@@ -12,7 +12,7 @@ individuals_json = []
 families_json = []
 x.field_names = ["ID","Name", "Gender", "Birthday", "Age","Alive","Death","Child","Spouse"]
 
-file = open('C:\\Users\Patel\OneDrive\Desktop\GEDCOM_Team4\Sprint_03\gedcom.ged',mode='r') 
+file = open('gedcom.ged',mode='r') 
 content = file.readlines()
 dict_name = {}
 sex = "N/A"
@@ -377,6 +377,102 @@ def US12():
 
 US12()
 
+# First cousions should not marry
+def US19():
+    for family in families_json:
+        family = json.loads(family)
+        # print("FAMILY US19", family)
+        husband_id = family['husband_id']
+        wife_id = family['wife_id']
+        husband_indi_record = {}
+        wife_indi_record = {}
+        if husband_id and wife_id:
+            # print(husband_id, wife_id)
+            for individual in individuals_json:
+                individual = json.loads(individual)
+                # print(individual)
+                if individual['id'] == husband_id:
+                    husband_indi_record = individual
+                elif individual['id'] == wife_id:
+                    wife_indi_record = individual
+                    # print("INDIVIDUALS", husband_indi_record, wife_indi_record)
+                if husband_indi_record and wife_indi_record:
+                    husbands_family_id = husband_indi_record['family_child']
+                    wifes_family_id = wife_indi_record['family_child']
+                    if husbands_family_id != 'N/A' and wifes_family_id != 'N/A':
+                        husbands_family_id = husbands_family_id.split("'")[1]
+                        wifes_family_id = wifes_family_id.split("'")[1]
+                        couples_parents_ids = []
+                        for fam in families_json:
+                            fam = json.loads(fam)
+                            # print("FAM", husbands_family_id, wifes_family_id)
+                            if fam['family_id'] in [wifes_family_id, husbands_family_id]:
+                                # print("COUPLES PARENTS", couples_parents_ids)
+                                couples_parents_ids = couples_parents_ids + [fam['husband_id'], fam['wife_id']]
+                        if len(couples_parents_ids) > 0:
+                            for each_fam in families_json:
+                                each_fam = json.loads(each_fam)
+                                children = each_fam['children']
+                                if children != 'N/A':
+                                    children = eval(children)
+                                    siblings = list(filter(lambda sibling: sibling in children, couples_parents_ids))
+                                    if len(siblings) > 1:
+                                        print(f"ERROR: FAMILY: US19: Couples with husband id {husband_indi_record['id']} and wife id {wife_indi_record['id']} are first cousins")
+US19()
+
+# Aunts and uncles should not marry their nieces or nephews
+
+def validate_us20(prob_siblings, spouse_id, gender):
+    for family in families_json:
+        family = json.loads(family)
+        children = family['children']
+        if children != 'N/A':
+            children = eval(children)
+            siblings = list(filter(lambda sibling: sibling in children, prob_siblings))
+            if len(siblings) > 1:
+                if gender == "MALE":
+                    print(f"ERROR: FAMILY: US20: Husband with id {prob_siblings[0]} is uncle of his wife with id {spouse_id}")
+                else:
+                    print(f"ERROR: FAMILY: US20: Wife with id {prob_siblings[0]} is aunt of her husband with id {spouse_id}")
+
+def US20():
+    for family in families_json:
+        family = json.loads(family)
+        # print("FAMILY US19", family)
+        husband_id = family['husband_id']
+        wife_id = family['wife_id']
+        husband_indi_record = {}
+        wife_indi_record = {}
+        if husband_id and wife_id:
+            # print(husband_id, wife_id)
+            for individual in individuals_json:
+                individual = json.loads(individual)
+                # print(individual)
+                if individual['id'] == husband_id:
+                    husband_indi_record = individual
+                elif individual['id'] == wife_id:
+                    wife_indi_record = individual
+                    # print("INDIVIDUALS", husband_indi_record, wife_indi_record)
+                if husband_indi_record and wife_indi_record:
+                    husbands_family_id = husband_indi_record['family_child']
+                    wifes_family_id = wife_indi_record['family_child']
+                    if husbands_family_id != 'N/A' and wifes_family_id != 'N/A':
+                        husbands_family_id = husbands_family_id.split("'")[1]
+                        wifes_family_id = wifes_family_id.split("'")[1]
+                        wifes_parents = []
+                        husbands_parents = []
+                        for fam in families_json:
+                            fam = json.loads(fam)
+                            if fam['family_id'] == wifes_family_id:
+                                wifes_parents = [fam['husband_id'], fam['wife_id']]
+                            elif fam['family_id'] == husbands_family_id:
+                                husbands_parents = [fam['husband_id'], fam['wife_id']]
+                        if len(husbands_parents) > 0 and len(husbands_parents) > 0:
+                            validate_us20([wife_indi_record['id']] + husbands_parents, husband_indi_record['id'], "FEMALE")
+                            validate_us20([husband_indi_record['id']] + wifes_parents, wife_indi_record['id'], "MALE")
+
+
+US20()
 
 
 
