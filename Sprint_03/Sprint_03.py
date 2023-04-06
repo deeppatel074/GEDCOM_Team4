@@ -379,6 +379,7 @@ US12()
 
 # First cousions should not marry
 def US19():
+    errors = set()
     for family in families_json:
         family = json.loads(family)
         # print("FAMILY US19", family)
@@ -411,13 +412,18 @@ def US19():
                                 couples_parents_ids = couples_parents_ids + [fam['husband_id'], fam['wife_id']]
                         if len(couples_parents_ids) > 0:
                             for each_fam in families_json:
+                                siblings = []
                                 each_fam = json.loads(each_fam)
                                 children = each_fam['children']
                                 if children != 'N/A':
                                     children = eval(children)
                                     siblings = list(filter(lambda sibling: sibling in children, couples_parents_ids))
-                                    if len(siblings) > 1:
-                                        print(f"ERROR: FAMILY: US19: Couples with husband id {husband_indi_record['id']} and wife id {wife_indi_record['id']} are first cousins")
+                                if len(siblings) > 1:
+                                    error = f"ERROR: FAMILY: US19: Couples with husband id {husband_indi_record['id']} and wife id {wife_indi_record['id']} are first cousins"
+                                    errors.add(error)
+    for error in errors:
+        print(error)
+    return errors
 US19()
 
 # Aunts and uncles should not marry their nieces or nephews
@@ -431,11 +437,13 @@ def validate_us20(prob_siblings, spouse_id, gender):
             siblings = list(filter(lambda sibling: sibling in children, prob_siblings))
             if len(siblings) > 1:
                 if gender == "MALE":
-                    print(f"ERROR: FAMILY: US20: Husband with id {prob_siblings[0]} is uncle of his wife with id {spouse_id}")
+                    return f"ERROR: FAMILY: US20: Husband with id {prob_siblings[0]} is uncle of his wife with id {spouse_id}"
                 else:
-                    print(f"ERROR: FAMILY: US20: Wife with id {prob_siblings[0]} is aunt of her husband with id {spouse_id}")
+                    return f"ERROR: FAMILY: US20: Wife with id {prob_siblings[0]} is aunt of her husband with id {spouse_id}"
+
 
 def US20():
+    errors = []
     for family in families_json:
         family = json.loads(family)
         # print("FAMILY US19", family)
@@ -467,10 +475,19 @@ def US20():
                                 wifes_parents = [fam['husband_id'], fam['wife_id']]
                             elif fam['family_id'] == husbands_family_id:
                                 husbands_parents = [fam['husband_id'], fam['wife_id']]
+                        error = None
                         if len(husbands_parents) > 0 and len(husbands_parents) > 0:
-                            validate_us20([wife_indi_record['id']] + husbands_parents, husband_indi_record['id'], "FEMALE")
-                            validate_us20([husband_indi_record['id']] + wifes_parents, wife_indi_record['id'], "MALE")
-
+                            error = validate_us20([wife_indi_record['id']] + husbands_parents, husband_indi_record['id'], "FEMALE")
+                            if error is not None:
+                                print(error)
+                                errors.append(error)
+                                error = None
+                            error = validate_us20([husband_indi_record['id']] + wifes_parents, wife_indi_record['id'], "MALE")
+                            if error is not None:
+                                print(error)
+                                errors.append(error)
+                                error = None
+    return errors
 
 US20()
 
