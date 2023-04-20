@@ -1,8 +1,10 @@
+0 NOTE GitHub Link: https://github.com/deeppatel074/GEDCOM_Team4
+0 NOTE Repository Name: GEDCOM_Team4
 0 HEAD
 1 SOUR Family Echo
 2 WWW http://www.familyecho.com/
 1 FILE My Family
-1 DATE 17 APR 2023
+1 DATE 19 APR 2023
 1 DEST ANSTFILE
 1 GEDC
 2 VERS 5.5.1
@@ -232,7 +234,7 @@
 2 _MARNM Jain
 1 SEX M
 1 BIRT
-2 DATE 3 MAR 2006
+2 DATE 3 MAY 2023
 1 FAMC @F11@
 0 @I23@ INDI
 1 NAME Miloni /Jain/
@@ -240,6 +242,8 @@
 2 SURN Jain
 2 _MARNM Jain
 1 SEX F
+1 BIRT
+2 DATE 28 FEB 1998
 1 FAMC @F11@
 0 @I24@ INDI
 1 NAME Maharsh /Patel/

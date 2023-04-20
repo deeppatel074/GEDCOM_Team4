@@ -1,8 +1,9 @@
 from prettytable import PrettyTable
 import datetime
 import json
-# from dateutil.parser import parse
-from datetime import date
+from dateutil.parser import parse
+from dateutil import parser
+from datetime import date, timedelta
 # from collections import defaultdict
 
 x = PrettyTable()
@@ -243,3 +244,77 @@ def US32():
 
 
 US32()
+
+def US38():
+    error = []
+    result_us38 = PrettyTable()
+    result_us38.field_names = ["ID", "Name", "Birthday", "Age"]
+    
+    today = date.today()
+    thirty_days = today + timedelta(days=30)
+    
+    for individual in individuals_json:
+        individual = json.loads(individual)
+        if individual["birth_date"] != "N/A" and individual["alive"] == "TRUE":
+            birthday = parser.parse(individual["birth_date"]).date()
+            age = calculate_age(birthday)
+            next_birthday = date(today.year, birthday.month, birthday.day)
+            if today <= next_birthday <= thirty_days:
+                result_us38.add_row([individual["id"], individual["name"], individual["birth_date"], age])
+    
+    if result_us38._rows:
+        print("US38: List all living people in a GEDCOM file whose birthdays occur in the next 30 days")
+        print(result_us38)
+        error.append("ERROR: US38: List all living people in a GEDCOM file whose birthdays occur in the next 30 days")
+    
+    return error
+
+def calculate_age(birthdate):
+    today = date.today()
+    age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+    return age
+
+US38()
+
+def US39():
+    error = []
+    result_us39 = PrettyTable()
+    result_us39.field_names = ["ID", "Husband Name", "Wife Name", "Marriage Date", "Anniversary Date"]
+    
+    today = date.today()
+    thirty_days = today + timedelta(days=30)
+    
+    
+    for family in families_json:
+        family = json.loads(family)
+        if family["marriage_date"] != "N/A" and family["husband_id"] != "N/A" and family["wife_id"] != "N/A":
+            husband_record = get_record_by_id(family["husband_id"])
+            wife_record = get_record_by_id(family["wife_id"])
+            
+            if husband_record["alive"] == "TRUE" and wife_record["alive"] == "TRUE":
+                marriage_date = parser.parse(family["marriage_date"]).date()
+                anniversary_date = date(today.year, marriage_date.month, marriage_date.day)
+                if today <= anniversary_date <= thirty_days:
+                    result_us39.add_row([family["family_id"], husband_record["name"], wife_record["name"], 
+                                         family["marriage_date"], anniversary_date])
+    
+    if result_us39._rows:
+        print("US39: List all living couples whose marriage anniversaries occur in the next 30 days")
+        print(result_us39)
+        error.append("ERROR: US39: List all living couples whose marriage anniversaries occur in the next 30 days")
+    
+    return error
+
+def get_record_by_id(record_id):
+  
+    for record in individuals_json:
+        if json.loads(record)["id"] == record_id:
+            return json.loads(record)
+    for record in families_json:
+        if json.loads(record)["id"] == record_id:
+            return json.loads(record)
+    return {}
+
+US39()
+
+

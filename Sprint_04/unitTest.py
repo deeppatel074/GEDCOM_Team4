@@ -10,6 +10,14 @@ class TestStringMethods(unittest.TestCase):
     def test_userstory32(self):
         result = ["ERROR: FAMILY: US32: Family with the same spouse names and marriage date already exists:  Husband Name: Aarav /Jain/, Wife Name: Cherry /Jain/, Marriage Date: 5 MAR 2005"]
         self.assertNotEqual(Sprint_04.US32(),result)
+    
+    def test_userstory38(self):
+        result = ["ERROR: INDIVIDUAL: US38: Individual ID I1 is not unique"]
+        self.assertNotEqual(Sprint_04.US38(),result)
+
+    def test_userstory39(self):
+        result = ["ERROR: FAMILY: US39: Family with Family ID: F12 has more than 15 siblings"]
+        self.assertNotEqual(Sprint_04.US39(),result)
 
 
 
