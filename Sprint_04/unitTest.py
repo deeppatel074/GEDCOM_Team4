@@ -27,6 +27,15 @@ class TestStringMethods(unittest.TestCase):
         result = 22
         self.assertEqual(Sprint_04.US30(),result)
     
+    def test_userstory27(self):
+        total_individuals = 55
+        result = f"All {total_individuals} indiiduals have been listed along with their ages."
+        self.assertEqual(Sprint_04.US27(), result)
+
+    def test_userstory28(self):
+        total_families = 12
+        result = f"The number of families for which siblings are listed in decreasing orders of their ages are {total_families}."
+        self.assertEqual(Sprint_04.US28(), result)
 
 
 

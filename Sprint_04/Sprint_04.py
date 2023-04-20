@@ -364,4 +364,49 @@ def US30():
 US30()
 
 
+def US27():
+    result_us27 = PrettyTable()
+    result_us27.field_names = ["Individual Id", "Name", "Age"]
+    for ind_record in individuals_json:
+        ind_record = json.loads(ind_record)
+        if ind_record["id"] != "N/A":
+            result_us27.add_row([ind_record["id"], ind_record["name"], ind_record["current_age"]])
+    # Prints result if it exists
+    if result_us27._rows:
+        print("US27: List individuals with their age")
+        print(result_us27)
+        # Unit test - verify all families with siblings have been processed
+        return f"All {len(result_us27._rows)} indiiduals have been listed along with their ages."
 
+# Include individual ages
+US27()
+
+def map_siblings(sibling):
+    return f"{sibling['sibling_id']}({sibling['age']})"
+
+def US28():
+    outputs = []
+    for fam_record in families_json:
+        fam_record = json.loads(fam_record)
+        if fam_record["family_id"] != "N/A":
+            children = eval(fam_record['children']) if fam_record['children']!="N/A" else []
+            if len(children) > 0:
+                child_records = []
+                sorted_records = []
+                sorted_siblings = []
+                for child_id in children:
+                    for ind_record in individuals_json:
+                        ind_record = json.loads(ind_record)
+                        if ind_record["id"] == child_id:
+                            child_records.append({"sibling_id": ind_record["id"], "age": ind_record["current_age"]})
+                sorted_records = sorted(child_records, key=lambda x: int(x["age"]), reverse=True)
+                sorted_siblings = list(map(map_siblings, sorted_records))
+                outputs.append(f"US28: Family {fam_record['family_id']} siblings in decreasing order of age: {' '.join(sorted_siblings)}")
+    # Print result
+    for record in outputs:
+        print(record)
+    # Unit test - verify all families with siblings have been processed
+    return f"The number of families for which siblings are listed in decreasing orders of their ages are {len(outputs)}."
+
+# Order siblings by age in decreasing order
+US28()
