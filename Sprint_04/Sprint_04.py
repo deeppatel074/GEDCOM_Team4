@@ -318,3 +318,50 @@ def get_record_by_id(record_id):
 US39()
 
 
+def US29():
+    result_us29 = PrettyTable()
+    result_us29.field_names = ["ID", "Name"]
+    death_count = 0
+    for item in individuals_json:
+        item = json.loads(item)
+        if item["death_date"]!= "N/A": 
+            death_count+=1
+            result_us29.add_row([item["id"], item["name"]])
+
+    if result_us29.rows:
+        print("US:29: List of Deceased members in the gedcom file")
+        print(result_us29)
+
+    return death_count
+    
+US29()
+
+def US30():
+    result_us30 = PrettyTable()
+    result_us30.field_names = ["ID","NAME"]
+    alive_tracker = set()
+    married_people = 0
+    for item in individuals_json:
+        item = json.loads(item)
+        if item["alive"] == "TRUE":
+            alive_tracker.add(item["id"])
+            
+
+    for item in families_json:
+        item = json.loads(item)
+        if item["divorced_date"]=="N/A":
+            if item["husband_id"] in alive_tracker and item["wife_id"] in alive_tracker:
+                married_people+=2
+                result_us30.add_row([item["husband_id"],item["husband_name"]])
+                result_us30.add_row([item["wife_id"],item["wife_name"]])
+    
+
+    if result_us30.rows:
+        print("List all living married people in a GEDCOM file")
+        print(result_us30)
+    
+    return married_people
+US30()
+
+
+

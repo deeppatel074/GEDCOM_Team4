@@ -19,6 +19,15 @@ class TestStringMethods(unittest.TestCase):
         result = ["ERROR: FAMILY: US39: Family with Family ID: F12 has more than 15 siblings"]
         self.assertNotEqual(Sprint_04.US39(),result)
 
+    def test_userstory29(self):
+        result = 6
+        self.assertEqual(Sprint_04.US29(),result)
+
+    def test_userstory30(self):
+        result = 22
+        self.assertEqual(Sprint_04.US30(),result)
+    
+
 
 
 if __name__ == '__main__':
