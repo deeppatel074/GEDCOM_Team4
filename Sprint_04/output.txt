@@ -1,0 +1,225 @@
+(base) Admin@MacBook-Pro Sprint_04 % /usr/local/bin/python3 /Users/Admin/Desktop/Agile/GEDCOM_Team4/Sprint_04/Sprint_04.py
+Individual Table ----------------------------------------------------------------------------------->
++-----+------------------------+--------+-------------+-----+-------+-------------+---------+---------+
+|  ID |          Name          | Gender |   Birthday  | Age | Alive |    Death    |  Child  |  Spouse |
++-----+------------------------+--------+-------------+-----+-------+-------------+---------+---------+
+|  I1 |      Nirav /Jain/      |  MALE  |  5 JUL 1998 |  25 |  TRUE |     N/A     |  {'F2'} |  {'F1'} |
+|  I2 |    Chandresh /Jain/    |  MALE  |  5 SEP 2023 |  0  |  TRUE |     N/A     |  {'F3'} |  {'F2'} |
+|  I3 |     Rachna /Patni/     | FEMALE | 27 MAY 1976 |  47 |  TRUE |     N/A     |  {'F4'} |  {'F2'} |
+|  I4 |    Naivedhya /Jain/    |  MALE  |  3 SEP 2003 |  20 |  TRUE |     N/A     |  {'F2'} |  {'F5'} |
+|  I5 |  Shrawan Kumar /Jain/  |  MALE  | 24 JUN 1947 |  76 |  TRUE |     N/A     |  {'F7'} |  {'F6'} |
+|  I6 | Rajkumari Jain /Godha/ | FEMALE |  1 JAN 1950 |  73 | FALSE | 20 JUN 2012 |   N/A   |  {'F6'} |
+|  I7 |     Ashok /Patni/      |  MALE  | 29 OCT 1948 |  75 |  TRUE |     N/A     |   N/A   |  {'F4'} |
+|  I8 |     Padma /Ajmera/     | FEMALE | 13 FEB 1951 |  72 |  TRUE |     N/A     |   N/A   |  {'F4'} |
+|  I9 |     Rodulal /Jain/     |  MALE  | 20 JUN 2006 |  17 | FALSE |  3 MAY 1998 |   N/A   |  {'F7'} |
+| I10 |     Rima /Gadiya/      | FEMALE | 15 NOV 1850 | 173 | FALSE | 12 AUG 2009 |   N/A   |  {'F7'} |
+| I11 |     Kiran /Patni/      | FEMALE | 27 NOV 1860 | 163 |  TRUE |     N/A     |   N/A   |  {'F3'} |
+| I12 |      Manas /Jain/      |  MALE  | 13 MAY 1978 |  45 |  TRUE |     N/A     |  {'F3'} |   N/A   |
+| I13 |     Sunita /Jain/      | FEMALE |  6 JUN 1970 |  53 |  TRUE |     N/A     |  {'F6'} |  {'F8'} |
+| I14 |      Sumit /Kala/      |  MALE  |  7 MAY 1962 |  61 | FALSE | 11 NOV 1974 |   N/A   |  {'F8'} |
+| I15 |     Shilpa /Jain/      | FEMALE |  9 JAN 1998 |  25 | FALSE | 16 SEP 2021 |   N/A   |  {'F9'} |
+| I16 |     Shaili /Jain/      | FEMALE |  3 APR 2004 |  19 |  TRUE |     N/A     |   N/A   |  {'F5'} |
+| I17 |      Aarav /Jain/      |  MALE  |  8 MAY 1992 |  31 |  TRUE |     N/A     |  {'F2'} | {'F10'} |
+| I18 |     Cherry /Jain/      | FEMALE |  3 APR 1992 |  31 |  TRUE |     N/A     |   N/A   | {'F10'} |
+| I19 |     Utkarsh /Jain/     |  MALE  |  3 MAR 2006 |  17 |  TRUE |     N/A     | {'F10'} |   N/A   |
+| I20 |      Aarav /Jain/      |  MALE  | 10 APR 1980 |  43 |  TRUE |     N/A     |  {'F2'} | {'F11'} |
+| I21 |     Cherry /Jain/      | FEMALE |  3 FEB 1985 |  38 |  TRUE |     N/A     |   N/A   | {'F11'} |
+| I22 |     Utkarsh /Jain/     |  MALE  |  3 MAY 2023 |  0  |  TRUE |     N/A     | {'F11'} |   N/A   |
+| I23 |     Miloni /Jain/      | FEMALE | 28 FEB 1998 |  25 |  TRUE |     N/A     | {'F11'} |   N/A   |
+| I24 |    Maharsh /Patel/     |  MALE  | 21 FEB 2023 |  0  |  TRUE |     N/A     |  {'F2'} |   N/A   |
+| I25 |     Rachel /Jain/      | FEMALE |  3 JUN 2000 |  23 | FALSE | 21 FEB 2023 |  {'F2'} |   N/A   |
+| I26 |      Guddu /Jain/      |  MALE  |  8 SEP 1985 |  38 |  TRUE |     N/A     |  {'F3'} | {'F12'} |
+| I27 |     Prerna /Jain/      | FEMALE | 10 FEB 1981 |  42 |  TRUE |     N/A     |   N/A   | {'F12'} |
+| I28 |      Guru /Jain/       |  MALE  |  3 MAY 2002 |  21 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I29 |      Rekha /Jain/      | FEMALE |  3 MAR 2003 |  20 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I30 |      Rana /Jain/       |  MALE  |  3 APR 2004 |  19 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I31 |     Laxman /Jain/      |  MALE  |  3 MAR 2005 |  18 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I32 |     Shreya /Jain/      | FEMALE | 12 OCT 2006 |  17 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I33 |      Amit /Jain/       |  MALE  | 10 NOV 2007 |  16 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I34 |     Utkarsh /Jain/     |  MALE  |  5 AUG 2009 |  14 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I35 |      Lalit /Jain/      |  MALE  |  2 JAN 2011 |  12 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I36 |      Priya /Jain/      | FEMALE | 10 MAR 2012 |  11 |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I37 |     Lalita /Jain/      | FEMALE | 17 JUN 2014 |  9  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I38 |      Rakhi /Jain/      | FEMALE | 19 JUL 2016 |  7  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I39 |    Mahendra /Jain/     |  MALE  | 12 APR 2017 |  6  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I40 |       Ram /Jain/       |  MALE  | 13 JUL 2017 |  6  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I41 |      Shyam /Jain/      |  MALE  | 16 MAY 2018 |  5  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I42 |     Aditya /Jain/      |  MALE  |  5 MAR 2020 |  3  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I43 |   Ananta Jain /Jain/   | FEMALE |  5 JUN 2021 |  2  |  TRUE |     N/A     | {'F12'} |   N/A   |
+| I44 |      Deep /Jain/       |  MALE  | 14 JUL 1998 |  25 |  TRUE |     N/A     |   N/A   |  {'F9'} |
+| I45 |      Meet /Jain/       |  MALE  | 17 MAY 1980 |  43 |  TRUE |     N/A     |  {'F9'} |   N/A   |
+| I46 |      Punit /Jain/      |  MALE  | 19 JAN 1980 |  43 |  TRUE |     N/A     |  {'F7'} | {'F13'} |
+| I47 |      Lucky /Jain/      |  MALE  | 19 JAN 1980 |  43 |  TRUE |     N/A     |  {'F7'} | {'F14'} |
+| I48 |      Asha /Jain/       | FEMALE |     N/A     |  43 |  TRUE |     N/A     |   N/A   | {'F13'} |
+| I49 |     Anushka /Jain/     | FEMALE |     N/A     |  43 |  TRUE |     N/A     |   N/A   | {'F14'} |
+| I50 |     Kishan /Jain/      |  MALE  |     N/A     |  43 |  TRUE |     N/A     | {'F13'} | {'F15'} |
+| I51 |     Akshita /Jain/     | FEMALE |     N/A     |  43 |  TRUE |     N/A     | {'F14'} | {'F15'} |
+| I52 |      Nitin /Jain/      |  MALE  |     N/A     |  43 |  TRUE |     N/A     | {'F14'} | {'F16'} |
+| I53 |     Pramila /Jain/     | FEMALE |     N/A     |  43 |  TRUE |     N/A     | {'F14'} | {'F17'} |
+| I54 |      Sasha /Jain/      | FEMALE |     N/A     |  43 |  TRUE |     N/A     |   N/A   | {'F16'} |
+| I55 |     Sundar /Jain/      |  MALE  |     N/A     |  43 |  TRUE |     N/A     | {'F16'} | {'F17'} |
++-----+------------------------+--------+-------------+-----+-------+-------------+---------+---------+
+
+
+Family Table ---------------------------------------------------------------------------------------------------->
++-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------------------------------------------------------------------------------+
+|  ID |   Married   |  Divorced  | HUSBAND ID |     HUSBAND NAME     | Wife ID |       Wife Name        |                                                     Children                                                     |
++-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------------------------------------------------------------------------------+
+|  F1 |  6 JUN 2015 | 9 AUG 2022 |     I1     |     Nirav /Jain/     |   I15   |     Shilpa /Jain/      |                                                       N/A                                                        |
+|  F9 | 13 AUG 2016 |    N/A     |    I44     |     Deep /Jain/      |   I15   |     Shilpa /Jain/      |                                                     {'I45'}                                                      |
+|  F2 | 18 MAY 1997 |    N/A     |     I2     |   Chandresh /Jain/   |    I3   |     Rachna /Patni/     |                                     {'I17', 'I25', 'I20', 'I24', 'I1', 'I4'}                                     |
+|  F3 |  7 APR 2015 |    N/A     |     I5     | Shrawan Kumar /Jain/ |   I11   |     Kiran /Patni/      |                                               {'I2', 'I26', 'I12'}                                               |
+|  F6 |  8 AUG 2012 | 7 MAR 2015 |     I5     | Shrawan Kumar /Jain/ |    I6   | Rajkumari Jain /Godha/ |                                                     {'I13'}                                                      |
+|  F4 | 17 FEB 1965 |    N/A     |     I7     |    Ashok /Patni/     |    I8   |     Padma /Ajmera/     |                                                      {'I3'}                                                      |
+|  F5 |  5 JAN 2019 | 4 MAR 2018 |     I4     |   Naivedhya /Jain/   |   I16   |     Shaili /Jain/      |                                                       N/A                                                        |
+|  F7 |     N/A     |    N/A     |     I9     |    Rodulal /Jain/    |   I10   |     Rima /Gadiya/      |                                               {'I5', 'I46', 'I47'}                                               |
+|  F8 | 17 NOV 1980 |    N/A     |    I14     |     Sumit /Kala/     |   I13   |     Sunita /Jain/      |                                                       N/A                                                        |
+| F10 |  5 MAR 2005 |    N/A     |    I17     |     Aarav /Jain/     |   I18   |     Cherry /Jain/      |                                                     {'I19'}                                                      |
+| F11 |  5 MAR 2005 |    N/A     |    I20     |     Aarav /Jain/     |   I21   |     Cherry /Jain/      |                                                  {'I23', 'I22'}                                                  |
+| F12 |     N/A     |    N/A     |    I26     |     Guddu /Jain/     |   I27   |     Prerna /Jain/      | {'I33', 'I36', 'I28', 'I38', 'I42', 'I29', 'I37', 'I39', 'I31', 'I40', 'I41', 'I30', 'I32', 'I35', 'I34', 'I43'} |
+| F13 |     N/A     |    N/A     |    I46     |     Punit /Jain/     |   I48   |      Asha /Jain/       |                                                     {'I50'}                                                      |
+| F14 |     N/A     |    N/A     |    I47     |     Lucky /Jain/     |   I49   |     Anushka /Jain/     |                                              {'I52', 'I51', 'I53'}                                               |
+| F15 |     N/A     |    N/A     |    I50     |    Kishan /Jain/     |   I51   |     Akshita /Jain/     |                                                       N/A                                                        |
+| F16 |     N/A     |    N/A     |    I52     |     Nitin /Jain/     |   I54   |      Sasha /Jain/      |                                                     {'I55'}                                                      |
+| F17 |     N/A     |    N/A     |    I55     |    Sundar /Jain/     |   I53   |     Pramila /Jain/     |                                                       N/A                                                        |
++-----+-------------+------------+------------+----------------------+---------+------------------------+------------------------------------------------------------------------------------------------------------------+
+US31: List living single
++-----+--------------+-------------+-----+
+|  ID |     Name     |  Birth Date | Age |
++-----+--------------+-------------+-----+
+| I12 | Manas /Jain/ | 13 MAY 1978 |  45 |
+| I45 | Meet /Jain/  | 17 MAY 1980 |  43 |
++-----+--------------+-------------+-----+
+US32: List multiple births
++-----------+-------------+-----------------+
+| Family ID |  Birth Date | Multiple Births |
++-----------+-------------+-----------------+
+|     F7    | 19 JAN 1980 |     I46, I47    |
++-----------+-------------+-----------------+
+US38: List all living people in a GEDCOM file whose birthdays occur in the next 30 days
++-----+----------------+-------------+-----+
+|  ID |      Name      |   Birthday  | Age |
++-----+----------------+-------------+-----+
+| I12 |  Manas /Jain/  | 13 MAY 1978 |  44 |
+| I17 |  Aarav /Jain/  |  8 MAY 1992 |  30 |
+| I22 | Utkarsh /Jain/ |  3 MAY 2023 |  -1 |
+| I28 |  Guru /Jain/   |  3 MAY 2002 |  20 |
+| I41 |  Shyam /Jain/  | 16 MAY 2018 |  4  |
+| I45 |  Meet /Jain/   | 17 MAY 1980 |  42 |
++-----+----------------+-------------+-----+
+US39: List all living couples whose marriage anniversaries occur in the next 30 days
++----+------------------+----------------+---------------+------------------+
+| ID |   Husband Name   |   Wife Name    | Marriage Date | Anniversary Date |
++----+------------------+----------------+---------------+------------------+
+| F2 | Chandresh /Jain/ | Rachna /Patni/ |  18 MAY 1997  |    2023-05-18    |
++----+------------------+----------------+---------------+------------------+
+US:29: List of Deceased members in the gedcom file
++-----+------------------------+
+|  ID |          Name          |
++-----+------------------------+
+|  I6 | Rajkumari Jain /Godha/ |
+|  I9 |     Rodulal /Jain/     |
+| I10 |     Rima /Gadiya/      |
+| I14 |      Sumit /Kala/      |
+| I15 |     Shilpa /Jain/      |
+| I25 |     Rachel /Jain/      |
++-----+------------------------+
+List all living married people in a GEDCOM file
++-----+----------------------+
+|  ID |         NAME         |
++-----+----------------------+
+|  I2 |   Chandresh /Jain/   |
+|  I3 |    Rachna /Patni/    |
+|  I5 | Shrawan Kumar /Jain/ |
+| I11 |    Kiran /Patni/     |
+|  I7 |    Ashok /Patni/     |
+|  I8 |    Padma /Ajmera/    |
+| I17 |     Aarav /Jain/     |
+| I18 |    Cherry /Jain/     |
+| I20 |     Aarav /Jain/     |
+| I21 |    Cherry /Jain/     |
+| I26 |     Guddu /Jain/     |
+| I27 |    Prerna /Jain/     |
+| I46 |     Punit /Jain/     |
+| I48 |     Asha /Jain/      |
+| I47 |     Lucky /Jain/     |
+| I49 |    Anushka /Jain/    |
+| I50 |    Kishan /Jain/     |
+| I51 |    Akshita /Jain/    |
+| I52 |     Nitin /Jain/     |
+| I54 |     Sasha /Jain/     |
+| I55 |    Sundar /Jain/     |
+| I53 |    Pramila /Jain/    |
++-----+----------------------+
+US27: List individuals with their age
++---------------+------------------------+-----+
+| Individual Id |          Name          | Age |
++---------------+------------------------+-----+
+|       I1      |      Nirav /Jain/      |  25 |
+|       I2      |    Chandresh /Jain/    |  0  |
+|       I3      |     Rachna /Patni/     |  47 |
+|       I4      |    Naivedhya /Jain/    |  20 |
+|       I5      |  Shrawan Kumar /Jain/  |  76 |
+|       I6      | Rajkumari Jain /Godha/ |  73 |
+|       I7      |     Ashok /Patni/      |  75 |
+|       I8      |     Padma /Ajmera/     |  72 |
+|       I9      |     Rodulal /Jain/     |  17 |
+|      I10      |     Rima /Gadiya/      | 173 |
+|      I11      |     Kiran /Patni/      | 163 |
+|      I12      |      Manas /Jain/      |  45 |
+|      I13      |     Sunita /Jain/      |  53 |
+|      I14      |      Sumit /Kala/      |  61 |
+|      I15      |     Shilpa /Jain/      |  25 |
+|      I16      |     Shaili /Jain/      |  19 |
+|      I17      |      Aarav /Jain/      |  31 |
+|      I18      |     Cherry /Jain/      |  31 |
+|      I19      |     Utkarsh /Jain/     |  17 |
+|      I20      |      Aarav /Jain/      |  43 |
+|      I21      |     Cherry /Jain/      |  38 |
+|      I22      |     Utkarsh /Jain/     |  0  |
+|      I23      |     Miloni /Jain/      |  25 |
+|      I24      |    Maharsh /Patel/     |  0  |
+|      I25      |     Rachel /Jain/      |  23 |
+|      I26      |      Guddu /Jain/      |  38 |
+|      I27      |     Prerna /Jain/      |  42 |
+|      I28      |      Guru /Jain/       |  21 |
+|      I29      |      Rekha /Jain/      |  20 |
+|      I30      |      Rana /Jain/       |  19 |
+|      I31      |     Laxman /Jain/      |  18 |
+|      I32      |     Shreya /Jain/      |  17 |
+|      I33      |      Amit /Jain/       |  16 |
+|      I34      |     Utkarsh /Jain/     |  14 |
+|      I35      |      Lalit /Jain/      |  12 |
+|      I36      |      Priya /Jain/      |  11 |
+|      I37      |     Lalita /Jain/      |  9  |
+|      I38      |      Rakhi /Jain/      |  7  |
+|      I39      |    Mahendra /Jain/     |  6  |
+|      I40      |       Ram /Jain/       |  6  |
+|      I41      |      Shyam /Jain/      |  5  |
+|      I42      |     Aditya /Jain/      |  3  |
+|      I43      |   Ananta Jain /Jain/   |  2  |
+|      I44      |      Deep /Jain/       |  25 |
+|      I45      |      Meet /Jain/       |  43 |
+|      I46      |      Punit /Jain/      |  43 |
+|      I47      |      Lucky /Jain/      |  43 |
+|      I48      |      Asha /Jain/       |  43 |
+|      I49      |     Anushka /Jain/     |  43 |
+|      I50      |     Kishan /Jain/      |  43 |
+|      I51      |     Akshita /Jain/     |  43 |
+|      I52      |      Nitin /Jain/      |  43 |
+|      I53      |     Pramila /Jain/     |  43 |
+|      I54      |      Sasha /Jain/      |  43 |
+|      I55      |     Sundar /Jain/      |  43 |
++---------------+------------------------+-----+
+US28: Family F9 siblings in decreasing order of age: I45(43)
+US28: Family F2 siblings in decreasing order of age: I20(43) I17(31) I1(25) I25(23) I4(20) I24(0)
+US28: Family F3 siblings in decreasing order of age: I12(45) I26(38) I2(0)
+US28: Family F6 siblings in decreasing order of age: I13(53)
+US28: Family F4 siblings in decreasing order of age: I3(47)
+US28: Family F7 siblings in decreasing order of age: I5(76) I46(43) I47(43)
+US28: Family F10 siblings in decreasing order of age: I19(17)
+US28: Family F11 siblings in decreasing order of age: I23(25) I22(0)
+US28: Family F12 siblings in decreasing order of age: I28(21) I29(20) I30(19) I31(18) I32(17) I33(16) I34(14) I35(12) I36(11) I37(9) I38(7) I39(6) I40(6) I41(5) I42(3) I43(2)
+US28: Family F13 siblings in decreasing order of age: I50(43)
+US28: Family F14 siblings in decreasing order of age: I52(43) I51(43) I53(43)
+US28: Family F16 siblings in decreasing order of age: I55(43)
